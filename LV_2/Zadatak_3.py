@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-image = plt.imread("D:\\OTHER\\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\LV\\LV_2\\road.jpg")
+image = plt.imread("road.jpg")
 
 # a) Posvijetli sliku
 brightness_increase_index = 50
