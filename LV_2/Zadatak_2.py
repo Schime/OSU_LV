@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-filename = "D:\\OTHER\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\LV\\LV_2\\data.csv"
+filename = "data.csv"
 data = np.loadtxt(filename, delimiter = ',', skiprows = 1)
 # pošto radimo sa CSV (comma-seperated file), znamo da su podaci odijeljeni zarezom te ga delimiterom odjeljujemo
 # skiprows označava broj redaka od početka čitanja dokumenta (1. redak u file-u ne čitamo)
