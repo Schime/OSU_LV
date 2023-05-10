@@ -5,7 +5,7 @@ import pandas as pd
 
 
 
-data = pd.read_csv("D:\\OTHER\\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Izlazni_ispit\\2\\titanic.csv")
+data = pd.read_csv("file.csv")
 
 
 
