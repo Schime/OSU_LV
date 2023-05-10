@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 
-data = np.genfromtxt("D:\\OTHER\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Izlazni_ispit\\pima-indians-diabetes.csv", delimiter=",", skip_header=9)
+data = np.genfromtxt("file.csv", delimiter=",", skip_header=9)
 
 # Na temelju veličine numpy polja data, na koliko osoba su izvršena mjerenja?
 
