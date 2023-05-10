@@ -62,7 +62,7 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
 
 
 # ucitaj podatke
-data = pd.read_csv("D:\\OTHER\\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Izlazni_ispit\\2\\titanic.csv")
+data = pd.read_csv("file.csv")
 print(data.info())
 
 data.hist()
