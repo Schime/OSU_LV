@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 
-data = pd.read_csv("D:\\OTHER\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Vjezba_za_ispit\\LV_3\\data_C02_emission.csv")
+data = pd.read_csv("data_C02_emission.csv")
 
 # a) Koliko mjerenja sadrži DataFrame?
     #print(len(data))
@@ -163,7 +163,7 @@ manual = data[(data["Transmission"]).str.startswith("AM")]
 # Koliko ima vrijednosti u "Fuel Consumption Comb (L/100km)" koje su veće od 10?
 # Ukoliko postoje, obriši ih.
 
-new_data = np.genfromtxt("D:\\OTHER\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Vjezba_za_ispit\\LV_3\\data_C02_emission.csv", delimiter=",", skip_header=1)
+new_data = np.genfromtxt("data_C02_emission.csv", delimiter=",", skip_header=1)
 
 fuel_consumption_comb = new_data[:, 9]
 
