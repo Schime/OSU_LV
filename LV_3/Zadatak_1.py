@@ -1,11 +1,12 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 
 
 
-data = pd.read_csv("data_C02_emission.csv")
+data = pd.read_csv("D:\\OTHER\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Vjezba_za_ispit\\LV_3\\data_C02_emission.csv")
 
 # a) Koliko mjerenja sadrži DataFrame?
     #print(len(data))
@@ -148,3 +149,84 @@ manual = data[(data["Transmission"]).str.startswith("AM")]
 # i) Izračunajte korelaciju između numeričkih veličina. Komentirajte dobiveni rezultat.
 
     #print(data.corr(numeric_only=True))
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# DODATNI ZADACI ZA VJEŽBU → koristeći numpy
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Koliko ima vrijednosti u "Fuel Consumption Comb (L/100km)" koje su veće od 10?
+# Ukoliko postoje, obriši ih.
+
+new_data = np.genfromtxt("D:\\OTHER\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Vjezba_za_ispit\\LV_3\\data_C02_emission.csv", delimiter=",", skip_header=1)
+
+fuel_consumption_comb = new_data[:, 9]
+
+fuel_consumption_comb_over_10_index = np.where(fuel_consumption_comb > 10)[0]
+
+new_filtered_data = np.delete(new_data, fuel_consumption_comb_over_10_index, axis=0)
+
+# Komentar:
+# new_data je isto što i data samo što sam u preko numpyja pristupio new_data umjesto pandasom
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Koristeći funkciju scatter, prikaži odnos "Engine Size (L)" i "Fuel Consumption City (L/100km)" koristeći nove podatke.
+
+engines = new_filtered_data[:, 3]
+fuel_cons_city = new_filtered_data[:, 7]
+plt.scatter(engines, fuel_cons_city)
+plt.title("Odnos veličine motora i gradske potrošnje")
+plt.xlabel("Veličina motora")
+plt.ylabel("Gradska potrošnja")
+plt.xlim(0)
+plt.ylim(0)
+plt.show()
+
+# Komentar:
+# Vidimo da graf doseže veličinu motora 3.5 jer smo koristili nove podatke.
+# Kada smo profiltrirali "Fuel Consumption City (L/100km)" u prošlom zadatku, obrisali smo sve one preko 10 pa time i veličine motora preko 3.5 jer veći motori troše puno
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Koristi originalnu tablicu!
+# Odredi maksimalu, minimalnu i srednju gradsku potrošnju goriva za automobile koji imaju broj cilindara veći od 6, 
+
+cylinders = new_data[:, 4]
+more_than_6_cylinders_index = np.where(cylinders > 6)[0]
+
+more_than_6_cylinders_fuel_consumption_city = new_data[more_than_6_cylinders_index, 7]
+
+print("Maksimalna gradska potrošnja goriva za automobile koji imaju više od 6 cilindara:", np.max(more_than_6_cylinders_fuel_consumption_city))
+print("Minimalna gradska potrošnja goriva za automobile koji imaju više od 6 cilindara:", np.min(more_than_6_cylinders_fuel_consumption_city))
+print("Srednja vrijednost gradske potrošnje goriva za automobile koji imaju više od 6 cilindara:", np.mean(more_than_6_cylinders_fuel_consumption_city))
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Pomoću stupčastog dijagrama prikažite postotke auta s 4 i 8 cilindara
+
+cylinder_4 = data[(data["Cylinders"] == 4)]
+cylinder_8 = data[(data["Cylinders"] == 8)]
+cylinder_16 = data[(data["Cylinders"] == 16)]
+
+cylinder_4_percent = len(cylinder_4) / len(data["Cylinders"] == 4) * 100
+cylinder_8_percent = len(cylinder_8) / len(data["Cylinders"] == 8) * 100
+cylinder_16_percent = len(cylinder_16) / len(data["Cylinders"] == 16) * 100
+
+labels = ["4 cylinder", "8 cylinder", "16 cylinder"]
+percentages = [cylinder_4_percent, cylinder_8_percent, cylinder_16_percent]
+plt.bar(labels, percentages)
+plt.title("Postotak auta s 4 cilindra i auta s 8 cilindra")
+plt.xlabel("Cilindri")
+plt.ylabel("Postotak auta")
+plt.show()
