@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, classification_report
 
 
 
-data = np.genfromtxt("D:\\OTHER\PROGRAMMING\\6. semestar\\Osnove strojnog učenja\\Izlazni_ispit\\pima-indians-diabetes.csv", delimiter=",", skip_header=9)
+data = np.genfromtxt("file.csv", delimiter=",", skip_header=9)
 
 X = data[:, :-1]
 y = data[:, -1]
